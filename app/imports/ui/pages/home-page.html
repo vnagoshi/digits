@@ -1,39 +1,32 @@
 <template name="Home_Page">
   <div class="ui middle aligned centered grid text container" style="margin-top: 10px">
-    <table class="ui celled unstackable table">
+    {{#if Template.subscriptionsReady}}
+    <table style="margin-top: 20px" class="ui celled table">
       <thead>
-        <tr>
-          <th>First</th>
-          <th>Last</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th>Email</th>
-        </tr>
+      <tr>
+        <th>First</th>
+        <th>Last</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+      </tr>
       </thead>
+
       <tbody>
+      {{#each contact in contactList}}
       <tr>
-        <td>John</td>
-        <td>Smith</td>
-        <td>123 Somewhere St, Knomb OH</td>
-        <td>808-123-4567</td>
-        <td>jsmith123@hawaii.edu</td>
+        <td>{{contact.first}}</td>
+        <td>{{contact.last}}</td>
+        <td>{{contact.address}}</td>
+        <td>{{contact.phonenumber}}</td>
+        <td>{{contact.email}}</td>
       </tr>
-      <tr>
-        <td>Tom</td>
-        <td>Green</td>
-        <td>999 Sax Ave, New York NY</td>
-        <td>808-999-4387</td>
-        <td>tomgreen@hawaii.edu</td>
-      </tr>
-      <tr>
-        <td>Mike</td>
-        <td>Flanders</td>
-        <td>314 Pi Ln, Honolulu HI</td>
-        <td>808-314-1592</td>
-        <td>pi@hawaii.edu</td>
-      </tr>
+      {{/each}}
       </tbody>
     </table>
+    {{else}}
+    {{> Loading}}
+    {{/if}}
 
   </div>
 </template>
