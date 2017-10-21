@@ -1,40 +1,18 @@
 <template name="Add_Contact_Page">
-  <div style="padding-top: 20px" class="ui text container">
-    <h4>Add Contact</h4>
-    <hr>
-    <div class="ui two column grid">
-      <div class="column">
-        <div class=" ui fluid input">
-          <input class="ui input" placeholder="first" type="text">
-        </div>
-      </div>
-      <div class="column">
-        <div class=" ui fluid input">
-          <input class="ui input" placeholder="last" type="text">
-        </div>
-      </div>
-    </div>
-    <h4>Address</h4>
-    <div class="ui fluid input">
-      <input class="ui input" placeholder="address" type="text">
-    </div>
-    <h4>Telephone/Email</h4>
-    <div class="ui two column grid">
-      <div class="column">
-        <div class=" ui fluid input">
-          <input class="ui input" placeholder="phone" type="text" >
-        </div>
-      </div>
-      <div class="column">
-        <div class=" ui fluid input">
-          <input placeholder="email" type="text">
-        </div>
-      </div>
-    </div>
-    <br>
-    <button class="ui button">Add</button>
+
+  <div style="padding-top: 20px" class="ui container">
+    <form class="ui form contact-data-form  {{ successClass }} {{ errorClass }}">
+      <h4 class="ui dividing header">Add Contact</h4>
+
+      {{> Text_Form_Control label="First" required=true errorMessage=(fieldError "First")}}
+      {{> Text_Form_Control label="Last" required=true errorMessage=(fieldError "Last")}}
+      {{> Text_Form_Control label="Address" required=true errorMessage=(fieldError "Address")}}
+      {{> Text_Form_Control label="Phone Number" required=true errorMessage=(fieldError "Phone Number")}}
+      {{> Text_Form_Control label="Email" required=true errorMessage=(fieldError "Email")}}
+
+      <button class="ui primary button" type="submit">Submit</button>
+
+    </form>
   </div>
-
-
 
 </template>
