@@ -1,37 +1,19 @@
 <template name="Edit_Contact_Page">
-  <div style="padding-top: 20px" class="ui text container">
-    <h4>Edit Contact</h4>
-    <hr>
-    <div class="ui two column grid">
-      <div class="column">
-        <div class=" ui fluid input">
-          <input class="ui input" placeholder="first" type="text">
-        </div>
-      </div>
-      <div class="column">
-        <div class=" ui fluid input">
-          <input class="ui input" placeholder="last" type="text">
-        </div>
-      </div>
-    </div>
-    <h4>Address</h4>
-    <div class="ui fluid input">
-      <input class="ui input" placeholder="address" type="text">
-    </div>
-    <h4>Telephone/Email</h4>
-    <div class="ui two column grid">
-      <div class="column">
-        <div class=" ui fluid input">
-          <input class="ui input" placeholder="phone" type="text" >
-        </div>
-      </div>
-      <div class="column">
-        <div class=" ui fluid input">
-          <input placeholder="email" type="text">
-        </div>
-      </div>
-    </div>
-    <br>
-    <button class="ui button">Update</button>
+  {{#if Template.subscriptionsReady}}
+  <div style="margin-top: 20px" class="ui container">
+
+    <form class="ui form contact-data-form {{ successClass }} {{ errorClass }}">
+      <h4 class="ui dividing header">Edit Contact</h4>
+
+      {{> Text_Form_Control label="First" required=true value=(contactDataField 'first') errorMessage=(fieldError "First")}}
+      {{> Text_Form_Control label="Last" required=true value=(contactDataField 'last') errorMessage=(fieldError "Last")}}
+      {{> Text_Form_Control label="Address" required=true value=(contactDataField 'address') errorMessage=(fieldError "Address")}}
+      {{> Text_Form_Control label="Phone Number" required=true value=(contactDataField 'phonenumber') errorMessage=(fieldError "Phone Number")}}
+      {{> Text_Form_Control label="Email" required=true value=(contactDataField 'email') errorMessage=(fieldError "Email")}}
+
+      <button class="ui primary button" type="submit">Update</button>
+    </form>
+
   </div>
+  {{/if}}
 </template>

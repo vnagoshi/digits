@@ -46,7 +46,7 @@ Template.Add_Contact_Page.events({
       instance.messageFlags.set(displayErrorMessages, false);
       FlowRouter.go('Home_Page');
     } else {
-      console.log("failed");
+      console.log('failed');
       instance.messageFlags.set(displayErrorMessages, true);
     }
   },

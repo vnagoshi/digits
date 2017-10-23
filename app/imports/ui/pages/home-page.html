@@ -9,6 +9,7 @@
         <th>Address</th>
         <th>Phone</th>
         <th>Email</th>
+        <th></th>
       </tr>
       </thead>
 
@@ -20,6 +21,7 @@
         <td>{{contact.address}}</td>
         <td>{{contact.phonenumber}}</td>
         <td>{{contact.email}}</td>
+        <td><a href="{{pathFor 'Edit_Contact_Page' _id=contact._id}}">Edit</a></td>
       </tr>
       {{/each}}
       </tbody>
