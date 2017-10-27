@@ -32,6 +32,20 @@ Template.Add_Contact_Page.events({
     const last = event.target.Last.value;
     const address = event.target.Address.value;
     const phonenumber = event.target['Phone Number'].value;
+    if (phonenumber.length < 12 || phonenumber.length > 12) {
+      return;
+    }
+    for (let i = 0; i < 12; i++) {
+      if (i === 3 || i === 7) {
+        if (phonenumber.charAt(i) !== '-') {
+          return;
+        }
+      } else {
+        if (phonenumber.charAt(i) % 1 !== 0) {
+          return;
+        }
+      }
+    }
     const email = event.target.Email.value;
     const newContactData = { first, last, address, phonenumber, email };
     console.log(newContactData);
