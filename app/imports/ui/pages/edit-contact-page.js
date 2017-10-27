@@ -32,6 +32,11 @@ Template.Edit_Contact_Page.helpers({
 });
 
 Template.Edit_Contact_Page.events({
+  'button .contact-data-form'(event, instance) {
+    event.preventDefault();
+    Contacts.remove(FlowRouter.getParam('_id'));
+    FlowRouter.go('Home_Page');
+  },
   'submit .contact-data-form'(event, instance) {
     event.preventDefault();
     const first = event.target.First.value;
