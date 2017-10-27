@@ -10,6 +10,10 @@ const displayErrorMessages = 'displayErrorMessages';
 
 Template.Edit_Contact_Page.onCreated(function onCreated() {
   this.subscribe('Contacts');
+});
+
+Template.Edit_Contact_Page.onCreated(function onCreated() {
+  this.subscribe('Contacts');
   this.messageFlags = new ReactiveDict();
   this.messageFlags.set(displayErrorMessages, false);
   this.context = ContactSchema.namedContext('Edit_ContactData_Page');
@@ -34,8 +38,19 @@ Template.Edit_Contact_Page.helpers({
 Template.Edit_Contact_Page.events({
   'submit .contact-data-form'(event, instance) {
     event.preventDefault();
+    let fail = false;
     const first = event.target.First.value;
     const last = event.target.Last.value;
+    Contacts.find().forEach(function (item) {
+      console.log(item);
+      if (item.first === first && item.last === last && item._id !== FlowRouter.getParam('_id')) {
+        fail = true;
+        console.log("fail");
+      }
+    });
+    if (fail) {
+      return;
+    }
     const address = event.target.Address.value;
     const phonenumber = event.target['Phone Number'].value;
     const email = event.target.Email.value;
